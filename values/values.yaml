@@ -1,0 +1,30 @@
+Ingress:
+#  Secret: "ds-k8s-dev.newyorker.de"
+  Secret: "ds-k8s.newyorker.de"
+  Name: "jupyter"
+Cluster: "c-vv85d:p-l9dwf"
+jupyterhub:
+  enabled: true
+  proxy:
+    secretToken: "asdf1234"
+#    service:
+#      type: ClusterIP
+#      https:
+#        enabled:false
+#      loadBalancerIP: []
+  auth:
+    type: ldap
+    ldap:
+      server:
+        address: emea.company.newyorker.de
+      dn:
+        lookup: true
+        search:
+          filter: '({login_attr}={login})'
+          user: 'nagiosquery'
+          password: 'nagiosquery'
+        user:
+          searchBase: 'dc=emea,dc=company,dc=newyorker,dc=de'
+          escape: False
+          attribute: 'sAMAccountName'
+          dnAttribute: 'cn'

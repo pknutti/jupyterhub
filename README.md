@@ -1,1 +1,1 @@
-# jupyterhub
+# jupyterhub with LDAP integration
